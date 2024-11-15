@@ -9,10 +9,18 @@
 //--//-->   STYLES GENERALES
 ======================================*/
 
+/* Existing light mode styles */
 body {
   background-color: #f5f5f5;
   color: #4e4e4e;
 }
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #121212; /* Dark background color */
+  color: #e0e0e0; /* Light text color */
+}
+
 
 h1,
 h2,
@@ -141,8 +149,11 @@ a:hover {
   font-size: 1.1rem;
 }
 
-/*--/ Title A /--*/
+body.dark-mode .title-s {
+  color: #d6c2c2; /* Lighter gray for better visibility */
+}
 
+/*--/ Title A /--*/
 .title-box {
   margin-bottom: 4rem;
 }
@@ -153,8 +164,17 @@ a:hover {
   text-transform: uppercase;
 }
 
+body.dark-mode .title-a {
+  color: #ffffff; /* Lighter gray for better visibility */
+}
+
 .subtitle-a {
   color: #4e4e4e;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .subtitle-a {
+  color: #b2a8a8; /* Lighter gray for better visibility */
 }
 
 .line-mf {
@@ -165,7 +185,6 @@ a:hover {
 }
 
 /*--/ Title Left /--*/
-
 .title-box-2 {
   margin-bottom: 3rem;
 }
@@ -184,6 +203,15 @@ a:hover {
   bottom: -12px;
 }
 
+/* Dark mode adjustments */
+body.dark-mode .title-left {
+  color: #ffffff; /* White for maximum contrast */
+}
+
+body.dark-mode .title-left:before {
+  background-color: #bbbbbb; /* Lighter gray line */
+}
+
 /*------/ Box /------*/
 
 .box-pl2 {
@@ -198,6 +226,12 @@ a:hover {
   z-index: 2;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
+
+/* Dark mode styles for .box-shadow-full */
+body.dark-mode .box-shadow-full {
+  background-color: #333;
+}
+
 
 /*------/ Socials /------*/
 
@@ -671,6 +705,7 @@ a:hover {
 //--//-->   ABOUT
 ======================================*/
 
+/* Existing light mode styles */
 .about-mf .box-shadow-full {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -699,6 +734,25 @@ a:hover {
   height: .7rem;
   background-color: #0078ff;
 }
+
+/* Dark mode styles */
+body.dark-mode .about-mf .box-shadow-full {
+  background-color: #333; /* Dark background for the box-shadow-full */
+  color: #e0e0e0; /* Light text color */
+}
+
+body.dark-mode .skill-mf span {
+  color: #bbbbbb; /* Lighter text color for better visibility */
+}
+
+body.dark-mode .skill-mf .progress {
+  background-color: #444; /* Darker background for the progress container */
+}
+
+body.dark-mode .skill-mf .progress .progress-bar {
+  background-color: #0078ff; /* Lighter color for the progress bar */
+}
+
 
 /*======================================
 //--//-->   SERVICES
@@ -1204,15 +1258,28 @@ footer .credits a {
     padding: 3rem;
   }
 
-  .navbar-b.navbar-trans .nav-item,
-  .navbar-b.navbar-reduce .nav-item {
-    padding-left: 10px;
-  }
+  /* Existing navbar styles */
+.navbar-b.navbar-trans .nav-item,
+.navbar-b.navbar-reduce .nav-item {
+  padding-left: 10px;
+}
 
-  .navbar-b.navbar-trans .nav-link:before,
-  .navbar-b.navbar-reduce .nav-link:before {
-    margin-left: 18px;
-  }
+.navbar-b.navbar-trans .nav-link:before,
+.navbar-b.navbar-reduce .nav-link:before {
+  margin-left: 18px;
+}
+
+/* Dark mode styles for the navbar */
+body.dark-mode .navbar {
+  background-color: #000; /* black background */
+  color: #fff; /* white text color */
+}
+
+/* Ensures nav links are visible in dark mode */
+body.dark-mode .navbar a {
+  color: #fff; /* white text color */
+}
+
 
   .intro .intro-title {
     font-size: 4.5rem;

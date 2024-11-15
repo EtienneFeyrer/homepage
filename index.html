@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Bootstrap Template</title>
+  <title>Etienne Feyrer</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -20,16 +20,21 @@
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="dark-mode.css">
   <!-- =======================================================
     Theme Name: Bootstrap Template
     Theme URL: https://bootstrapmade.com/bootstrap-portfolio-html-template/
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
+
+  
+  
 </head>
 <body>
   <!-- Your content goes here -->
@@ -81,7 +86,7 @@
         <div class="container">
           <!--<p class="display-6 color-d">Hello, world!</p>-->
           <h1 class="intro-title mb-4">I am Etienne Feyrer</h1>
-          <p class="intro-subtitle"><span class="text-slider-items">Student of Bioinformatics, It-Support, Web Designer, Full Stack Developer</span><strong class="text-slider"></strong></p>
+          <p class="intro-subtitle"><span class="text-slider-items">Student of Bioinformatics, It-Support, Systems Automation Specialist, Full Stack Developer</span><strong class="text-slider"></strong></p>
           <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
         </div>
       </div>
@@ -93,7 +98,11 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
+          <button id="dark-mode-toggle" class="dark-mode-toggle">
+            <img id="dark-mode-icon" src="img/darkmode.png" alt="Toggle Dark Mode">
+          </button>
           <div class="box-shadow-full">
+            
             <div class="row">
               <div class="col-md-6">
                 <div class="row">
@@ -105,7 +114,7 @@
                   <div class="col-sm-6 col-md-7">
                     <div class="about-info">
                       <p><span class="title-s">Name: </span> <span>Etienne Feyrer</span></p>
-                      <p><span class="title-s">Profile: </span> <span>Bioinformstic Student</span></p>
+                      <p><span class="title-s">Profile: </span> <span>Bioinformatic Student</span></p>
                       <p><span class="title-s">Email: </span> <span>etiennefeyrer@gmail.com</span></p>
                       <p><span class="title-s">Phone: </span> <span>015151835275</span></p>
                     </div>
@@ -123,7 +132,7 @@
                     <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
-                  <span>Python</span> <span class="pull-right">50%</span>
+                  <span>Powershell</span> <span class="pull-right">50%</span>
                   <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
                       aria-valuemax="100"></div>
@@ -495,6 +504,27 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleButton = document.getElementById('dark-mode-toggle');
+      const darkModeIcon = document.getElementById('dark-mode-icon');
+      const body = document.body;
+  
+      toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+  
+        // Change the icon based on the mode
+        if (body.classList.contains('dark-mode')) {
+          darkModeIcon.src = 'img/lightmode.png'; // Show sun icon in dark mode
+        } else {
+          darkModeIcon.src = 'img/darkmode.png'; // Show moon icon in light mode
+        }
+      });
+    });
+  </script>
+  
+  
 
 </body>
 </html>

@@ -1,0 +1,40 @@
+/* Light mode styles */
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+  
+  /* Button styles */
+  .dark-mode-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px; /* Adjust padding if needed */
+    background-color: transparent;
+    border: none; /* Remove border */
+    cursor: pointer;
+  }
+  
+  .dark-mode-toggle img {
+    width: 20px !important; /* Adjust size */
+    height: 20px !important;
+  }
+  
+  .dark-mode-toggle:focus {
+    outline: none;
+  }
+
+  
+  /* Dark mode styles for the button */
+  body.dark-mode .dark-mode-toggle {
+    background-color: transparent !important;
+    border: none !important; /* Remove border */
+  }
+  
+  body.dark-mode .dark-mode-toggle img {
+    content: url('../img/lightmode.png') !important; /* Change icon for dark mode */
+  }
+  /* Remove default focus outline */
+
+  
+  
