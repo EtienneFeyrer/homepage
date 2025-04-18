@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Description - PerformanceTracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        header, section {
+            padding: 20px;
+            margin: 10px;
+        }
+        header {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        header.dark-mode {
+            background-color: #333333;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        button.toggle-dark-mode {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        button.toggle-dark-mode.dark-mode {
+            background-color: #0056b3;
+        }
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>Result</h1>
+        <button id="darkModeToggle" class="toggle-dark-mode">Enable Dark Mode</button>
+        <button id="homepageRedirect" class="toggle-dark-mode">Go to Homepage</button>
+    </header>
+
+    <nav>
+        <a href="Project-description.html">Project Description</a>
+        <a href="Procedure.html">Procedure</a>
+        <a href="Result.html">Result</a>
+        <a href="Conclusion.html">Conclusion</a>
+    </nav>
+
+    <!-- Result Section -->
+    <section id="result">
+        <h2>Result</h2>
+        <p>The following pages demonstrate the core functionality of the PerformanceTracker application, including user authentication, performance tracking, and administrative tools.</p>
+
+        <!-- Login Page -->
+        <h3>Login Page</h3>
+        <p>The login page handles user authentication and redirects successful logins to the homepage. The app sends API requests to the backend for validation.</p>
+        <p>
+            <img src="../img/LoginPage.png" alt="Login Page Screenshot" style="max-width: 100%; height: auto;">
+        </p>
+        <pre>
+            <code>
+const Login = ({ setUsername, username, returnData2 }) => {
+const [password, setPassword] = useState('');
+const [errorMessage, setErrorMessage] = useState(''); // State for error message
+const navigate = useNavigate();
+
+useEffect(() => {
+    console.log('Username:', username);
+    console.log('Password:', password);
+}, [username, password]);
+
+const handleUsernameChange = (e) => { setUsername(e.target.value); };
+const handlePasswordChange = (e) => { setPassword(e.target.value); };
+
+const handleSubmit = () => {
+    const loginResult = login2(returnData2, username, password);
+    console.log(loginResult);
+    console.log('Form submitted');
+
+    if (loginResult.success) {
+        console.log('try open page');
+        setUsername(username);
+        navigate('/homepage');
+    } else {
+        setErrorMessage(loginResult.message); // Set error message if login fails
+    }
+};
+};
+            </code>
+        </pre>
+
+        <!-- Homepage -->
+        <h3>Homepage</h3>
+        <p>The homepage dynamically presents user-specific performance metrics, including daily, monthly, and total mileage, retrieved from the server. Additionally, the Navbar, along with the locally stored username, ensures seamless navigation.</p>
+        <p>
+            <img src="../img/HomepageTracker.jpeg" alt="Homepage Screenshot" style="max-width: 100%; height: auto;">
+        </p>
+        <pre>
+            <code>
+const Homepage = ({ username, DailyMileage, MonthlyMileage, TotalMileage, returnData2 }) => {
+const [Username, setUsername] = useState(localStorage.getItem('username') || '');
+
+useEffect(() => {
+    if (username) {
+        setUsername(username);
+        localStorage.setItem('username', username);
+    }
+}, [username]);
+
+const navigate = useNavigate();
+
+const handleAddPerformance = () => {
+    navigate('/homepage/performance');
+};
+};
+            </code>
+        </pre>
+
+        <!-- Performance Page -->
+        <h3>Performance Page</h3>
+        <p>The Performance page enables users to record their performance data for a specific date through an intuitively designed CSS-powered day-picker.</p>
+        <p>
+            <img src="../img/TrackerPage.jpeg" alt="Performance Page Screenshot" style="max-width: 100%; height: auto;">
+        </p>
+        <pre>
+            <code>
+const Performance = ({ username, returnData2 }) => {
+const [Username, setUsername] = useState(localStorage.getItem('username') || '');
+
+useEffect(() => {
+    if (username) {
+        console.log("ReturnData2", returnData2);
+        setUsername(username);
+        localStorage.setItem('username', username);
+    }
+}, [username]);
+
+const defaultClassNames = getDefaultClassNames();
+const [selected, setSelected] = useState(new Date());
+
+const handleDayClick = () => {};
+
+const css = `
+.my-today {
+    font-weight: bold;
+}
+.my-selected {
+    border: 1px solid #Ff4040;
+    border-width: 2px;
+}
+.my-nav-button {
+    color: #Ff4040;
+}
+.my-footer {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    color: #Ff4040;
+}`;
+};
+            </code>
+        </pre>
+
+        <!-- Admin Page -->
+        <h3>Admin Page</h3>
+        <p>The Admin Page provides the admin with the option to add users into the database using a simple input field. The app sends API POST requests to the backend.</p>
+        <p>
+            <img src="../img/AdminPage.jpeg" alt="Admin Page Screenshot" style="max-width: 100%; height: auto;">
+        </p>
+        <pre>
+            <code>
+const AdminPage = () => {
+const [username, setUsername] = useState('');
+const [password, setPassword] = useState('');
+const [successMessage, setSuccessMessage] = useState(''); // State for success message
+
+const handleUsernameChange = (e) => { setUsername(e.target.value); };
+const handlePasswordChange = (e) => { setPassword(e.target.value); };
+
+const handleCreateUser = async () => {
+    if (!username || !password) {
+        setSuccessMessage('Please fill in both fields');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://IP-Address/students', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            setSuccessMessage('User created successfully');
+            setUsername(''); // Clear the username field
+            setPassword(''); // Clear the password field
+        } else {
+            setSuccessMessage(data.error || 'Failed to create user');
+        }
+    } catch (error) {
+        console.error('Error creating user:', error);
+        setSuccessMessage('An error occurred while creating the user');
+    }
+};
+};
+            </code>
+        </pre>
+    </section>
+
+    <script>
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const homepageRedirect = document.getElementById("homepageRedirect");
+        const body = document.body;
+        const header = document.getElementById("header");
+
+        // Dark mode toggle functionality
+        darkModeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            header.classList.toggle("dark-mode");
+            darkModeToggle.classList.toggle("dark-mode");
+
+            if (body.classList.contains("dark-mode")) {
+                darkModeToggle.textContent = "Disable Dark Mode";
+            } else {
+                darkModeToggle.textContent = "Enable Dark Mode";
+            }
+        });
+
+        // Redirect to homepage functionality
+        homepageRedirect.addEventListener("click", () => {
+            window.location.href = "../index.html"; // Adjust the path if needed
+        });
+    </script>
+</body>
+</html>

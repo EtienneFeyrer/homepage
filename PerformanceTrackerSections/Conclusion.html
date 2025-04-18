@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusion - PerformanceTracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        header, section {
+            padding: 20px;
+            margin: 10px;
+        }
+        header {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        header.dark-mode {
+            background-color: #333333;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        button.toggle-dark-mode {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        button.toggle-dark-mode.dark-mode {
+            background-color: #0056b3;
+        }
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>Conclusion</h1>
+        <button id="darkModeToggle" class="toggle-dark-mode">Enable Dark Mode</button>
+        <button id="homepageRedirect" class="toggle-dark-mode">Go to Homepage</button>
+    </header>
+
+    <nav>
+        <a href="Project-description.html">Project Description</a>
+        <a href="Procedure.html">Procedure</a>
+        <a href="Result.html">Result</a>
+        <a href="Conclusion.html">Conclusion</a>
+    </nav>
+
+    <!-- Conclusion Section -->
+    <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>The PerformanceTracker application is a comprehensive tool for tracking and managing user performance metrics. It provides a user-friendly interface, secure authentication, and robust data management capabilities.</p>
+        <p>By utilizing modern web technologies and best practices, the application ensures a seamless user experience while maintaining data integrity and security.</p>
+        <p>The application can be seamlessly extended with additional features such as Team-Modes and special event management, leveraging Java class structures and an organized section directory.</p>
+    </section>
+
+    <script>
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const homepageRedirect = document.getElementById("homepageRedirect");
+        const body = document.body;
+        const header = document.getElementById("header");
+
+        // Dark mode toggle functionality
+        darkModeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            header.classList.toggle("dark-mode");
+            darkModeToggle.classList.toggle("dark-mode");
+
+            if (body.classList.contains("dark-mode")) {
+                darkModeToggle.textContent = "Disable Dark Mode";
+            } else {
+                darkModeToggle.textContent = "Enable Dark Mode";
+            }
+        });
+
+        // Redirect to homepage functionality
+        homepageRedirect.addEventListener("click", () => {
+            window.location.href = "../index.html"; // Adjust the path if needed
+        });
+    </script>
+</body>
+</html>

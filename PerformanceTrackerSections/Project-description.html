@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Description - PerformanceTracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        header, section {
+            padding: 20px;
+            margin: 10px;
+        }
+        header {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        header.dark-mode {
+            background-color: #333333;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        button.toggle-dark-mode {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        button.toggle-dark-mode.dark-mode {
+            background-color: #0056b3;
+        }
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>Project Description</h1>
+        <button id="darkModeToggle" class="toggle-dark-mode">Enable Dark Mode</button>
+        <button id="homepageRedirect" class="toggle-dark-mode">Go to Homepage</button>
+    </header>
+
+    <nav>
+        <a href="Project-description.html">Project Description</a>
+        <a href="Procedure.html">Procedure</a>
+        <a href="Result.html">Result</a>
+        <a href="Conclusion.html">Conclusion</a>
+    </nav>
+
+    <!-- Project Description Section -->
+    <section id="project-description">
+        <h2>Project Description</h2>
+        <p>The following diagram illustrates the flow between the Login Page, Homepage, Performance Page, and Admin Page:</p>
+        <div class="mermaid">
+            flowchart LR
+                LoginPage["<b>Login Page:</b><br>Authenticate users securely<br>API validates credentials"]
+                Homepage["<b>Homepage:</b><br>Shows performance metrics<br>Countdown timer active<br>Dynamic charts shown"]
+                PerformancePage["<b>Performance Page:</b><br>Log performance data<br>Interactive calendar input<br>Data stored securely"]
+                AdminPanel["<b>Admin Panel:</b><br>Intermediary admin</b><br> gateway"]
+                AdminPage["<b>Admin Page:</b><br>Manage user accounts<br>Forms create entries<br>Secure POST used"]
+
+                LoginPage -->|User Access| Homepage
+                Homepage -->|Navigation| PerformancePage
+                LoginPage -->|Admin Access| AdminPanel
+                AdminPanel -->|Admin Access| AdminPage
+
+                %% Define blue-themed nodes
+                classDef blueNodes fill:#cce5ff,stroke:#0000ff,stroke-width:2px,color:#0000ff;
+                class LoginPage,Homepage,PerformancePage,AdminPanel,AdminPage blueNodes;
+
+                %% Style all arrows to be thicker and red
+                linkStyle default stroke:#FF4040,stroke-width:3px;
+        </div>
+    </section>
+
+    <!-- Include Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default', // Default theme
+            themeVariables: {
+                linkColor: '#FF4040', // Red arrows
+            },
+        });
+    </script>
+
+    <script>
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const homepageRedirect = document.getElementById("homepageRedirect");
+        const body = document.body;
+        const header = document.getElementById("header");
+
+        // Dark mode toggle functionality
+        darkModeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            header.classList.toggle("dark-mode");
+            darkModeToggle.classList.toggle("dark-mode");
+
+            if (body.classList.contains("dark-mode")) {
+                darkModeToggle.textContent = "Disable Dark Mode";
+            } else {
+                darkModeToggle.textContent = "Enable Dark Mode";
+            }
+        });
+
+        // Redirect to homepage functionality
+        homepageRedirect.addEventListener("click", () => {
+            window.location.href = "../index.html"; // Adjust the path if needed
+        });
+    </script>
+</body>
+</html>

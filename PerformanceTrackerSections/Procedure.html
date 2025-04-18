@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedure - PerformanceTracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        header, section {
+            padding: 20px;
+            margin: 10px;
+        }
+        header {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        header.dark-mode {
+            background-color: #333333;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        button.toggle-dark-mode {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        button.toggle-dark-mode.dark-mode {
+            background-color: #0056b3;
+        }
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>Procedure</h1>
+        <button id="darkModeToggle" class="toggle-dark-mode">Enable Dark Mode</button>
+        <button id="homepageRedirect" class="toggle-dark-mode">Go to Homepage</button>
+    </header>
+
+    <nav>
+        <a href="Project-description.html">Project Description</a>
+        <a href="Procedure.html">Procedure</a>
+        <a href="Result.html">Result</a>
+        <a href="Conclusion.html">Conclusion</a>
+    </nav>
+
+    <!-- Procedure Section -->
+    <section id="procedure">
+        <h2>Procedure</h2>
+        <p><strong>Virtualization:</strong> Used VirtualBox to create a Virtual Machine, configured with a bridged adapter to enable local network hosting during development.</p>
+        <p><strong>Version Control:</strong> Managed code across multiple branches using GitHub for efficient collaboration and tracking.</p>
+        <p><strong>Deployment Environments:</strong> Implemented the application in both Windows and Linux (Ubuntu Server) environments.</p>
+        <p><strong>Database Management:</strong> Integrated backend database environments, including Microsoft SQL Server and MySQL Server.</p>
+        <p><strong>Automation:</strong> Utilized BAT scripting on Windows and Bash scripting on Linux for automatic table updates.</p>
+        <p><strong>Branching Strategy:</strong> The Windows implementation is maintained on the main branch. The Linux implementation resides on the Linux-server branch.</p>
+    </section>
+
+    <script>
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const homepageRedirect = document.getElementById("homepageRedirect");
+        const body = document.body;
+        const header = document.getElementById("header");
+
+        // Dark mode toggle functionality
+        darkModeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            header.classList.toggle("dark-mode");
+            darkModeToggle.classList.toggle("dark-mode");
+
+            if (body.classList.contains("dark-mode")) {
+                darkModeToggle.textContent = "Disable Dark Mode";
+            } else {
+                darkModeToggle.textContent = "Enable Dark Mode";
+            }
+        });
+
+        // Redirect to homepage functionality
+        homepageRedirect.addEventListener("click", () => {
+            window.location.href = "../index.html"; // Adjust the path if needed
+        });
+    </script>
+</body>
+</html>
