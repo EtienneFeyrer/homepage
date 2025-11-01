@@ -71,6 +71,8 @@ a:hover {
   box-shadow: 0 0 0 4px #cde1f8;
 }
 
+
+
 .display-5 {
   font-size: 2.5rem;
   font-weight: 300;
@@ -717,6 +719,10 @@ body.dark-mode .box-shadow-full {
 
 .about-mf .about-img img {
   margin-left: 10px;
+}
+
+.about-info p {
+  margin-bottom: 3rem; /* adjust value to taste */
 }
 
 .skill-mf span {
