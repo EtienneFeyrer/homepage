@@ -143,6 +143,19 @@ a:hover {
   margin-top: 4rem;
 }
 
+.section-counter {
+  height: 100vh; /* Full viewport height */
+  position: relative;
+  display: flex;
+  align-items: center; /* Vertically center content */
+}
+
+.knowledge-graph-container img {
+  max-height: 100%; /* Prevent overflow */
+  object-fit: contain; /* Keep aspect ratio */
+}
+
+
 /*--/ Title s /--*/
 
 .title-s {
@@ -977,6 +990,29 @@ body.dark-mode .skill-mf .progress .progress-bar {
   float: right;
 }
 
+/*======================================
+Knowledge Graph
+*/
+
+.knowledge-graph-container {
+  padding: 0;
+  margin: 0;
+}
+
+#knowledge-graph {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#knowledge-graph img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
 /*======================================
 //--//-->   BLOG-SINGLE
 ======================================*/
