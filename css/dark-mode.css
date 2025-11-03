@@ -1,40 +1,167 @@
-/* Light mode styles */
-body {
-    background-color: #1a1a1a;
-    color: #fff;
-  }
-  
-  /* Button styles */
-  .dark-mode-toggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px; /* Adjust padding if needed */
-    background-color: transparent;
-    border: none; /* Remove border */
-    cursor: pointer;
-  }
-  
-  .dark-mode-toggle img {
-    width: 20px !important; /* Adjust size */
-    height: 20px !important;
-  }
-  
-  .dark-mode-toggle:focus {
-    outline: none;
-  }
+/*======================================
+//--//-->   DARK MODE STYLES
+======================================*/
 
-  
-  /* Dark mode styles for the button */
-  body.dark-mode .dark-mode-toggle {
-    background-color: transparent !important;
-    border: none !important; /* Remove border */
-  }
-  
-  body.dark-mode .dark-mode-toggle img {
-    content: url('../img/lightmode.png') !important; /* Change icon for dark mode */
-  }
-  /* Remove default focus outline */
+/* Base dark mode styles */
+body.dark-mode {
+  background-color: #121212;
+  background-image: url('../img/darkbackground.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #e0e0e0;
+}
 
-  
-  
+/* Title styles */
+body.dark-mode .title-box {
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .title-s {
+  color: #d6c2c2;
+}
+
+body.dark-mode .title-a {
+  color: #ffffff;
+}
+
+body.dark-mode .subtitle-a {
+  color: #b2a8a8;
+}
+
+body.dark-mode .title-left {
+  color: #ffffff;
+}
+
+body.dark-mode .title-left:before {
+  background-color: #bbbbbb;
+}
+
+/* Box shadow styles */
+body.dark-mode .box-shadow-full {
+  background-color: #333;
+}
+
+body.dark-mode .about-mf .box-shadow-full {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+/* Skill section */
+body.dark-mode .skill-mf span {
+  color: #bbbbbb;
+}
+
+body.dark-mode .skill-mf .progress {
+  background-color: #444;
+}
+
+body.dark-mode .skill-mf .progress .progress-bar {
+  background-color: #0078ff;
+}
+
+/* Navbar styles */
+body.dark-mode .navbar {
+  background-color: #000;
+  color: #fff;
+}
+
+body.dark-mode .navbar a {
+  color: #fff;
+}
+
+/* Service box dark mode styles */
+body.dark-mode .service-box {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .service-box .service-ico {
+  color: #e0e0e0;
+}
+
+body.dark-mode .service-box .s-title {
+  color: #ffffff;
+}
+
+body.dark-mode .service-box .s-description {
+  color: #b0b0b0;
+}
+
+/*Project section */
+body.dark-mode .box-shadow,
+body.dark-mode .paralax-mf,
+body.dark-mode .work-box {
+  background-color: #565656;
+  color: #fff;
+}
+
+body.dark-mode .card-blog {
+  background-color: #565656;
+  color: #fff;
+  box-shadow: 0 13px 8px -10px rgba(255, 255, 255, 0.162);
+}
+
+body.dark-mode .work-box .w-more,
+body.dark-mode .work-box .w-title {
+  color: #fff;
+}
+
+body.dark-mode .work-box .w-ctegory,
+body.dark-mode .work-box .w-date {
+  color: #fff !important;
+}
+
+body.dark-mode .work-box .w-date a {
+  color: #fff !important;
+  text-decoration: underline;
+}
+
+body.dark-mode .work-box .w-date a:hover {
+  color: #0563bb !important;
+}
+
+.box-shadow-a,
+.button:hover {
+  box-shadow: 0 0 0 4px #cde1f8;
+}
+
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  position: relative;
+  padding: 8px;
+  margin-right: 15px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+}
+
+.dark-mode-toggle img {
+  width: 24px !important;
+  height: 24px !important;
+  display: block;
+}
+
+.dark-mode-toggle:focus {
+  outline: none;
+}
+
+body.dark-mode .dark-mode-toggle {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+body.dark-mode .dark-mode-toggle img {
+  content: url('../img/lightmode.png') !important;
+}

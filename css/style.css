@@ -12,6 +12,11 @@
 /* Existing light mode styles */
 body {
   background-color: #f5f5f5;
+  background-image: url('../img/lightbackground.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: #4e4e4e;
 }
 
@@ -171,6 +176,10 @@ body.dark-mode .title-s {
 /*--/ Title A /--*/
 .title-box {
   margin-bottom: 4rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
 }
 
 .title-a {
@@ -846,6 +855,8 @@ body.dark-mode .skill-mf .progress .progress-bar {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .work-box:hover img {

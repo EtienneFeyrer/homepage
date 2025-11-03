@@ -25,6 +25,9 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
+  <!-- Dark Mode Stylesheet -->
+  <link href="css/dark-mode.css" rel="stylesheet">
+
   <!-- EmailJS -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   
@@ -46,6 +49,9 @@
   <!--/ Nav Star /-->
   <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
+      <button id="dark-mode-toggle" class="dark-mode-toggle navbar-toggle">
+        <img id="dark-mode-icon" src="img/darkmode.png" alt="Toggle Dark Mode">
+      </button>
       <a class="navbar-brand js-scroll" href="#page-top">Personal Page</a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,9 +103,6 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <button id="dark-mode-toggle" class="dark-mode-toggle">
-            <img id="dark-mode-icon" src="img/darkmode.png" alt="Toggle Dark Mode">
-          </button>
           <div class="box-shadow-full">
             
             <div class="row">
@@ -673,25 +676,10 @@
   </script>
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+  
+  <!-- Dark Mode Toggle Script -->
+  <script src="js/dark-mode.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const toggleButton = document.getElementById('dark-mode-toggle');
-      const darkModeIcon = document.getElementById('dark-mode-icon');
-      const body = document.body;
-  
-      toggleButton.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-  
-        // Change the icon based on the mode
-        if (body.classList.contains('dark-mode')) {
-          darkModeIcon.src = 'img/lightmode.png'; // Show sun icon in dark mode
-        } else {
-          darkModeIcon.src = 'img/darkmode.png'; // Show moon icon in light mode
-        }
-      });
-    });
-  </script>
 <!-- Template Main Javascript File -->
 <script>
   $(document).ready(function() {
