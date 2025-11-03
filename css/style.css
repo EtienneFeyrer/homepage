@@ -893,6 +893,48 @@ body.dark-mode .skill-mf .progress .progress-bar {
   font-size: 1.2rem;
 }
 
+.portfolio-carousel .owl-nav button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: #fff !important;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.portfolio-carousel .owl-nav button.owl-prev {
+  left: -25px;
+}
+
+.portfolio-carousel .owl-nav button.owl-next {
+  right: -25px;
+}
+
+.portfolio-carousel .owl-nav button:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.portfolio-carousel .owl-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.portfolio-carousel .owl-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.portfolio-carousel .owl-dot.active {
+  background: #0078ff;
+}
+
 /*======================================
 //--//-->   TESTIMONIALS
 ======================================*/
