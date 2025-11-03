@@ -5,7 +5,7 @@
 /* Base dark mode styles */
 body.dark-mode {
   background-color: #121212;
-  background-image: url('../img/darkbackground.jpg');
+  /*background-image: url('../img/darkbackground.jpg');*/
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

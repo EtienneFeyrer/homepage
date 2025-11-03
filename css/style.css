@@ -12,7 +12,7 @@
 /* Existing light mode styles */
 body {
   background-color: #f5f5f5;
-  background-image: url('../img/lightbackground.jpg');
+  /*background-image: url('../img/lightbackground.jpg');*/
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
