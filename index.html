@@ -25,6 +25,8 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   
   <!-- =======================================================
     <link href="css/dark-mode.css" rel="stylesheet">
@@ -446,31 +448,31 @@
                     </h5>
                   </div>
                   <div>
-                      <form action="" method="post" role="form" class="contactForm">
-                      <div id="sendmessage">Your message has been sent. Thank you!</div>
-                      <div id="errormessage"></div>
+                      <form id="contact-form" class="contactForm">
+                      <div id="sendmessage" style="display: none;">Your message has been sent. Thank you!</div>
+                      <div id="errormessage" style="display: none;"></div>
                       <div class="row">
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <input type="text" name="user_name" class="form-control" id="name" placeholder="Your Name" required />
                             <div class="validation"></div>
                           </div>
                         </div>
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <input type="email" class="form-control" name="user_email" id="email" placeholder="Your Email" required />
                             <div class="validation"></div>
                           </div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required />
                               <div class="validation"></div>
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for me" placeholder="Message"></textarea>
+                            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                             <div class="validation"></div>
                           </div>
                         </div>
@@ -492,8 +494,7 @@
                       Have questions or need assistance? I'm here to help! Whether you're looking to discuss a project, need support, or just want to say hello, feel free to reach out.
                     </p>
                     <ul class="list-ico">
-                      <li><span class="ion-ios-location"></span> 72072 TUEBINGEN SCHICKHARDTSTARSSE 18</li>
-                      <li><span class="ion-ios-telephone"></span> 015151835275</li>
+                      <li><span class="ion-ios-location"></span> BOSTON MA</li>
                       <li><span class="ion-email"></span> etiennefeyrer@gmail.com</li>
                     </ul>
                   </div>
@@ -549,8 +550,110 @@
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/lightbox/js/lightbox.min.js"></script>
   <script src="lib/typed/typed.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+
+  <!-- EmailJS Contact Form -->
+  <script>
+  // Initialize EmailJS
+  (function() {
+    emailjs.init('se5RRyghBzzXHjNhI');
+  })();
+
+  // Rate limiting: 3 emails per day per user
+  function checkRateLimit() {
+    const now = new Date();
+    const today = now.toDateString();
+    
+    // Get stored data from localStorage
+    let emailData = localStorage.getItem('contactFormData');
+    
+    if (emailData) {
+      emailData = JSON.parse(emailData);
+      
+      // Check if it's a new day
+      if (emailData.date !== today) {
+        // Reset counter for new day
+        emailData = { date: today, count: 0 };
+      }
+      
+      // Check if limit reached
+      if (emailData.count >= 3) {
+        return false;
+      }
+    } else {
+      // First time user
+      emailData = { date: today, count: 0 };
+    }
+    
+    return emailData;
+  }
+
+  function incrementEmailCount(emailData) {
+    emailData.count++;
+    localStorage.setItem('contactFormData', JSON.stringify(emailData));
+  }
+
+  // Contact form handler
+  document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    const sendMessage = document.getElementById('sendmessage');
+    const errorMessage = document.getElementById('errormessage');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Hide previous messages
+        sendMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
+
+        // Check rate limit
+        const emailData = checkRateLimit();
+        
+        if (emailData === false) {
+          errorMessage.textContent = 'You have reached the daily limit of 3 messages. Please try again tomorrow.';
+          errorMessage.style.display = 'block';
+          errorMessage.style.color = '#dc3545';
+          return;
+        }
+
+        // Disable submit button during sending
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+
+        // Send email using EmailJS
+        emailjs.sendForm('service_0ue6nfk', 'template_kpacul9', this)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            
+            // Increment email count after successful send
+            incrementEmailCount(emailData);
+            
+            // Show success message with remaining emails
+            const remaining = 3 - emailData.count - 1;
+            sendMessage.textContent = 'Your message has been sent. Thank you! (' + remaining + ' message' + (remaining !== 1 ? 's' : '') + ' remaining today)';
+            sendMessage.style.display = 'block';
+            sendMessage.style.color = '#28a745';
+            contactForm.reset();
+            
+            // Re-enable button
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+          }, function(error) {
+            console.log('FAILED...', error);
+            errorMessage.textContent = 'Failed to send message. Please try again or email directly.';
+            errorMessage.style.display = 'block';
+            errorMessage.style.color = '#dc3545';
+            
+            // Re-enable button
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+          });
+      });
+    }
+  });
+  </script>
 
   <script>
   // Calculate and update immediately on page load
