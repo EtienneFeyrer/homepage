@@ -571,6 +571,21 @@ body.dark-mode .box-shadow-full {
   font-weight: 600;
 }
 
+body:not(.dark-mode) .navbar-b .navbar-brand,
+body:not(.dark-mode) .navbar-b.navbar-trans .nav-link,
+body:not(.dark-mode) .navbar-b.navbar-reduce .nav-link,
+body:not(.dark-mode) .navbar-b.navbar-trans .nav-link:hover,
+body:not(.dark-mode) .navbar-b.navbar-reduce .nav-link:hover,
+body:not(.dark-mode) .navbar-b.navbar-trans .nav-link.active,
+body:not(.dark-mode) .navbar-b.navbar-reduce .nav-link.active {
+  color: #1B1B1B;
+}
+
+.navbar-b.navbar-trans .nav-link:before,
+.navbar-b.navbar-reduce .nav-link:before {
+  background-color: #1B1B1B;
+}
+
 .navbar-b .navbar-nav .dropdown-item.show .dropdown-menu,
 .navbar-b .dropdown.show .dropdown-menu,
 .navbar-b .dropdown-btn.show .dropdown-menu {
@@ -730,6 +745,10 @@ body.dark-mode .box-shadow-full {
 ======================================*/
 
 /* Existing light mode styles */
+.about-mf {
+  padding-top: 6rem;
+}
+
 .about-mf .box-shadow-full {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -737,6 +756,16 @@ body.dark-mode .box-shadow-full {
 
 .about-mf .about-img {
   margin-bottom: 2rem;
+}
+
+.profile-summary {
+  font-size: 1.3rem;
+  font-weight: 350;
+}
+
+.profile-location {
+  font-size: 1.4rem;
+  font-weight: 300;
 }
 
 .about-mf .about-img img {
@@ -810,6 +839,13 @@ body.dark-mode .skill-mf .progress .progress-bar {
   font-size: 4rem;
 }
 
+.service-box .ico-circle .material-icons-outlined {
+  display: block;
+  font-size: 4rem;
+  line-height: 100px;
+  text-align: center;
+}
+
 .service-box .s-title {
   font-size: 1.4rem;
   text-transform: uppercase;
@@ -819,6 +855,65 @@ body.dark-mode .skill-mf .progress .progress-bar {
 
 .service-box .s-description {
   color: #4e4e4e;
+}
+
+.logo-marquee {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin: 0 0 2rem;
+  overflow: hidden;
+}
+
+.logo-marquee .track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  align-items: center;
+  gap: 70px;
+  animation: logo-marquee-scroll 30s linear infinite;
+}
+
+#skills {
+  padding-bottom: 4rem;
+}
+
+.logo-marquee .track img {
+  display: block;
+  width: auto;
+  height: 170px;
+  flex: 0 0 auto;
+}
+
+@keyframes logo-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.logo-marquee .fade-left,
+.logo-marquee .fade-right {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 120px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.logo-marquee .fade-left {
+  left: 0;
+  background: linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0));
+}
+
+.logo-marquee .fade-right {
+  right: 0;
+  background: linear-gradient(to left, #f5f5f5, rgba(245, 245, 245, 0));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee .track {
+    animation-play-state: paused;
+  }
 }
 
 /*======================================
@@ -866,7 +961,23 @@ body.dark-mode .skill-mf .progress .progress-bar {
 
 .work-img {
   display: block;
+  position: relative;
   overflow: hidden;
+}
+
+.work-img::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  padding: 4px 10px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.65);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border-radius: 3px;
 }
 
 .work-img img {
@@ -879,7 +990,7 @@ body.dark-mode .skill-mf .progress .progress-bar {
 
 .work-content .w-more {
   color: #4e4e4e;
-  font-size: .8rem;
+  font-size: 1rem;
 }
 
 .work-content .w-more .w-ctegory {
@@ -901,7 +1012,7 @@ body.dark-mode .skill-mf .progress .progress-bar {
 }
 
 .w-title {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .portfolio-carousel .owl-nav button {
@@ -916,12 +1027,36 @@ body.dark-mode .skill-mf .progress .progress-bar {
   font-size: 24px;
 }
 
+.portfolio-mf .title-box {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.portfolio-carousel {
+  width: calc(100% + 65px);
+  padding: 0 30px;
+}
+
+.portfolio-mf {
+  padding-bottom: 3rem;
+}
+
+.portfolio-carousel .work-box {
+  margin-bottom: 0;
+}
+
+.portfolio-carousel .owl-stage-outer {
+  padding: 12px 10px;
+  margin: 0 -10px;
+  width: calc(100% + 20px);
+}
+
 .portfolio-carousel .owl-nav button.owl-prev {
-  left: -25px;
+  left: 0;
 }
 
 .portfolio-carousel .owl-nav button.owl-next {
-  right: -25px;
+  right: 0;
 }
 
 .portfolio-carousel .owl-nav button:hover {
@@ -930,7 +1065,7 @@ body.dark-mode .skill-mf .progress .progress-bar {
 
 .portfolio-carousel .owl-dots {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .portfolio-carousel .owl-dot {

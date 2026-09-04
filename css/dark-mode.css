@@ -49,6 +49,11 @@ body.dark-mode .about-mf .box-shadow-full {
   color: #e0e0e0;
 }
 
+body.dark-mode .about-mf h1,
+body.dark-mode .about-mf .profile-location {
+  color: #fff;
+}
+
 /* Skill section */
 body.dark-mode .skill-mf span {
   color: #bbbbbb;
@@ -64,12 +69,31 @@ body.dark-mode .skill-mf .progress .progress-bar {
 
 /* Navbar styles */
 body.dark-mode .navbar {
-  background-color: #000;
   color: #fff;
+}
+
+body.dark-mode .navbar.navbar-trans {
+  background-color: transparent;
+}
+
+body.dark-mode .navbar.navbar-reduce {
+  background-color: #000;
 }
 
 body.dark-mode .navbar a {
   color: #fff;
+}
+
+body.dark-mode .navbar .navbar-brand,
+body.dark-mode .navbar .nav-link,
+body.dark-mode .navbar .nav-link:hover,
+body.dark-mode .navbar .nav-link.active,
+body.dark-mode .navbar .nav-link.show {
+  color: #fff;
+}
+
+body.dark-mode .navbar .nav-link:before {
+  background-color: #fff;
 }
 
 /* Service box dark mode styles */
@@ -82,6 +106,10 @@ body.dark-mode .service-box .service-ico {
   color: #e0e0e0;
 }
 
+body.dark-mode .service-box .service-ico a {
+  color: inherit;
+}
+
 body.dark-mode .service-box .s-title {
   color: #ffffff;
 }
@@ -90,12 +118,30 @@ body.dark-mode .service-box .s-description {
   color: #b0b0b0;
 }
 
+body.dark-mode .logo-marquee .fade-left {
+  background: linear-gradient(to right, #121212, rgba(18, 18, 18, 0));
+}
+
+body.dark-mode .logo-marquee .fade-right {
+  background: linear-gradient(to left, #121212, rgba(18, 18, 18, 0));
+}
+
 /*Project section */
 body.dark-mode .box-shadow,
 body.dark-mode .paralax-mf,
 body.dark-mode .work-box {
-  background-color: #565656;
+  background-color: #000;
   color: #fff;
+}
+
+body.dark-mode .work-box {
+  box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.45),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+}
+
+body.dark-mode .work-content {
+  background-color: #000;
 }
 
 body.dark-mode .card-blog {
